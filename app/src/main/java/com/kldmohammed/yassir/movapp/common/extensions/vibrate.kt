@@ -1,4 +1,4 @@
-package com.kldmohammed.androidtechtask.common.extensions
+package com.kldmohammed.yassir.movapp.common.extensions
 
 import android.content.Context
 import android.os.Build

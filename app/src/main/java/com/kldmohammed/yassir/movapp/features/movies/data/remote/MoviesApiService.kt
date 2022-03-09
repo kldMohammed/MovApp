@@ -13,7 +13,7 @@ interface MoviesApiService {
     
     @GET("movie/{movie_id}")
     fun fetchMovieDetails(
-        @Path("movie_id") movieId: Int,
+        @Path("movie_id") movieId: Long,
     ): Call<MovieDto>
     
     
