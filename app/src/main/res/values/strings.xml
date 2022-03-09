@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">MovApp</string>
+    <string name="movie_name_place_holder">The Shawshank Redemption</string>
+    <string name="movie_date_placeholder">1994</string>
+    <string name="movie_image_content_desc">Movie Image</string>
 </resources>
