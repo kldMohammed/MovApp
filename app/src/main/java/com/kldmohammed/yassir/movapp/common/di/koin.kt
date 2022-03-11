@@ -1,7 +1,11 @@
 package com.kldmohammed.yassir.movapp.common.di
 
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
+import com.kldmohammed.yassir.movapp.features.movies.data.datasource.MoviesDataSource
+import com.kldmohammed.yassir.movapp.features.movies.data.datasource.impl.MoviesDataSourceImpl
 import com.kldmohammed.yassir.movapp.features.movies.data.remote.MoviesApiService
+import com.kldmohammed.yassir.movapp.features.movies.data.repository.MoviesRepository
+import com.kldmohammed.yassir.movapp.features.movies.data.repository.impl.MoviesRepositoryImpl
 import kotlinx.serialization.json.Json
 import okhttp3.HttpUrl
 import okhttp3.Interceptor
@@ -21,6 +25,11 @@ val appModule = module {
     single { provideApiService(get()) }
 }
 
+
+val movieModule = module {
+    single<MoviesDataSource> { MoviesDataSourceImpl(get()) }
+    single<MoviesRepository> { MoviesRepositoryImpl(get()) }
+}
 
 private const val BASE_API_URL =
     "https://android-interview.s3.eu-west-2.amazonaws.com/"
