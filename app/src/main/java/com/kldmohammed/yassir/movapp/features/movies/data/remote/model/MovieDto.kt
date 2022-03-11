@@ -1,11 +1,12 @@
 package com.kldmohammed.yassir.movapp.features.movies.data.remote.model
 
 
+import com.kldmohammed.yassir.movapp.features.movies.domain.model.MovieDetails
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class MovieDto (
+data class MovieDto(
     val adult: Boolean,
     
     @SerialName("backdrop_path")
@@ -58,11 +59,11 @@ data class MovieDto (
     val voteAverage: Double,
     
     @SerialName("vote_count")
-    val voteCount: Long
+    val voteCount: Long,
 )
 
 @Serializable
-data class BelongsToCollection (
+data class BelongsToCollection(
     val id: Long,
     val name: String,
     
@@ -70,17 +71,17 @@ data class BelongsToCollection (
     val posterPath: String,
     
     @SerialName("backdrop_path")
-    val backdropPath: String
+    val backdropPath: String,
 )
 
 @Serializable
-data class Genre (
+data class Genre(
     val id: Long,
-    val name: String
+    val name: String,
 )
 
 @Serializable
-data class ProductionCompany (
+data class ProductionCompany(
     val id: Long,
     
     @SerialName("logo_path")
@@ -89,24 +90,29 @@ data class ProductionCompany (
     val name: String,
     
     @SerialName("origin_country")
-    val originCountry: String
+    val originCountry: String,
 )
 
 @Serializable
-data class ProductionCountry (
+data class ProductionCountry(
     @SerialName("iso_3166_1")
     val iso3166_1: String,
     
-    val name: String
+    val name: String,
 )
 
 @Serializable
-data class SpokenLanguage (
+data class SpokenLanguage(
     @SerialName("english_name")
     val englishName: String,
     
     @SerialName("iso_639_1")
     val iso639_1: String,
     
-    val name: String
+    val name: String,
+)
+
+
+fun MovieDto.toMovieDetails() = MovieDetails(
+    id, posterPath, releaseDate, title, overview
 )

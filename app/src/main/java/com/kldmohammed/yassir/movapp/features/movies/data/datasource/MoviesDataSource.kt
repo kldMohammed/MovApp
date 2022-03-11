@@ -6,7 +6,7 @@ import com.kldmohammed.yassir.movapp.features.movies.data.remote.model.MoviesRes
 
 interface MoviesDataSource {
     
-    suspend fun loadAllMovies(): UiState<MoviesResponseDto>
+    suspend fun loadAllMovies(): Result<MoviesResponseDto>
     
-    suspend fun loadMovieDetails(movieId: Long): UiState<MovieDto>
+    suspend fun loadMovieDetails(movieId: Long): Result<MovieDto>
 }

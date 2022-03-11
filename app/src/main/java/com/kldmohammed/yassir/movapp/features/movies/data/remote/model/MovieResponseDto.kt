@@ -1,6 +1,7 @@
 package com.kldmohammed.yassir.movapp.features.movies.data.remote.model
 
 
+import com.kldmohammed.yassir.movapp.features.movies.domain.model.Movie
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -51,4 +52,9 @@ data class Result(
     
     @SerialName("vote_count")
     val voteCount: Long,
+)
+
+
+fun Result.toMovie() = Movie(
+    id, posterPath, releaseDate, title
 )
