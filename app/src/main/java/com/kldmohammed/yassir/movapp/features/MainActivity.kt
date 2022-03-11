@@ -1,7 +1,7 @@
-package com.kldmohammed.yassir.movapp
+package com.kldmohammed.yassir.movapp.features
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.kldmohammed.yassir.movapp.R
 
 class MainActivity : AppCompatActivity() {

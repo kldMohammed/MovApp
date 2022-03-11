@@ -6,6 +6,8 @@ import com.kldmohammed.yassir.movapp.features.movies.data.datasource.impl.Movies
 import com.kldmohammed.yassir.movapp.features.movies.data.remote.MoviesApiService
 import com.kldmohammed.yassir.movapp.features.movies.data.repository.MoviesRepository
 import com.kldmohammed.yassir.movapp.features.movies.data.repository.impl.MoviesRepositoryImpl
+import com.kldmohammed.yassir.movapp.features.movies.domain.usecase.GetAllMovieUseCase
+import com.kldmohammed.yassir.movapp.features.movies.domain.usecase.GetMovieDetailsUseCase
 import kotlinx.serialization.json.Json
 import okhttp3.HttpUrl
 import okhttp3.Interceptor
@@ -29,6 +31,8 @@ val appModule = module {
 val movieModule = module {
     single<MoviesDataSource> { MoviesDataSourceImpl(get()) }
     single<MoviesRepository> { MoviesRepositoryImpl(get()) }
+    single<GetAllMovieUseCase> { GetAllMovieUseCase(get()) }
+    single<GetMovieDetailsUseCase> { GetMovieDetailsUseCase(get()) }
 }
 
 private const val BASE_API_URL =
