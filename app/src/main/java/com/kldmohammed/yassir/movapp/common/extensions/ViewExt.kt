@@ -18,7 +18,9 @@
 package com.kldmohammed.yassir.movapp.common.extensions
 
 import android.view.View
+import android.widget.TextView
 import com.google.android.material.snackbar.Snackbar
+import com.kldmohammed.yassir.movapp.R
 
 fun View.show() {
 	animate().alpha(1.0f).duration = 300
@@ -63,28 +65,28 @@ fun View.longSnackBar(message: CharSequence) = Snackbar
 //		show()
 //	}
 
-//fun View.errorSnackBar(message: String) = Snackbar
-//	.make(this, message, Snackbar.LENGTH_LONG)
-//	.apply {
-//		context.vibrate()
-//		//generate the snackbar
-//		//  val sb = Snackbar.make(rootView, snack.text, duration)
-//		//set te action button text color
-//		setActionTextColor(context.resources.getColor(R.color.white))
-//		//Get the view of the snackbar
-//		// val sbView = view
-//		//set background color
-//		/*  val params = view.layoutParams as FrameLayout.LayoutParams
-//		  params.gravity = Gravity.BOTTOM
-//		  view.layoutParams = params*/
-//
-//		view.setBackgroundColor(context.resources.getColor(R.color.red))
-//		//Get the textview of the snackbar text
-//
-//		val textView = view.findViewById(R.id.snackbar_text) as TextView
-//		//set text color
-//		textView.setTextColor(context.resources.getColor(R.color.white))
-//		//increase max lines of text in snackbar. default is 2.
-//		textView.maxLines = 10
-//		show()
-//	}
+fun View.errorSnackBar(message: String) = Snackbar
+	.make(this, message, Snackbar.LENGTH_LONG)
+	.apply {
+		context.vibrate()
+		//generate the snackbar
+		//  val sb = Snackbar.make(rootView, snack.text, duration)
+		//set te action button text color
+		setActionTextColor(context.resources.getColor(R.color.white))
+		//Get the view of the snackbar
+		// val sbView = view
+		//set background color
+		/*  val params = view.layoutParams as FrameLayout.LayoutParams
+		  params.gravity = Gravity.BOTTOM
+		  view.layoutParams = params*/
+
+		view.setBackgroundColor(context.resources.getColor(R.color.red))
+		//Get the textview of the snackbar text
+
+		val textView = view.findViewById(com.google.android.material.R.id.snackbar_text) as TextView
+		//set text color
+		textView.setTextColor(context.resources.getColor(R.color.white))
+		//increase max lines of text in snackbar. default is 2.
+		textView.maxLines = 10
+		show()
+	}

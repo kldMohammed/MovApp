@@ -3,7 +3,6 @@ package com.kldmohammed.yassir.movapp.application
 import android.app.Application
 import com.kldmohammed.yassir.movapp.common.di.appModule
 import com.kldmohammed.yassir.movapp.common.di.movieModule
-import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
 
 class MovAppApplication : Application() {
@@ -11,7 +10,7 @@ class MovAppApplication : Application() {
         super.onCreate()
         
         startKoin {
-            androidLogger()
+//            androidLogger()
             modules(
                 appModule,
                 movieModule,

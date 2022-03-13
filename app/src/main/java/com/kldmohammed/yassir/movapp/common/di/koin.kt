@@ -8,6 +8,7 @@ import com.kldmohammed.yassir.movapp.features.movies.data.repository.MoviesRepos
 import com.kldmohammed.yassir.movapp.features.movies.data.repository.impl.MoviesRepositoryImpl
 import com.kldmohammed.yassir.movapp.features.movies.domain.usecase.GetAllMovieUseCase
 import com.kldmohammed.yassir.movapp.features.movies.domain.usecase.GetMovieDetailsUseCase
+import com.kldmohammed.yassir.movapp.features.movies.ui.all.MoviesViewModel
 import kotlinx.serialization.json.Json
 import okhttp3.HttpUrl
 import okhttp3.Interceptor
@@ -15,6 +16,7 @@ import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.logging.HttpLoggingInterceptor
+import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.create
@@ -31,12 +33,13 @@ val appModule = module {
 val movieModule = module {
     single<MoviesDataSource> { MoviesDataSourceImpl(get()) }
     single<MoviesRepository> { MoviesRepositoryImpl(get()) }
-    single<GetAllMovieUseCase> { GetAllMovieUseCase(get()) }
-    single<GetMovieDetailsUseCase> { GetMovieDetailsUseCase(get()) }
+    single { GetAllMovieUseCase(get()) }
+    single { GetMovieDetailsUseCase(get()) }
+    viewModel { MoviesViewModel(get()) }
 }
 
 private const val BASE_API_URL =
-    "https://android-interview.s3.eu-west-2.amazonaws.com/"
+    "https://api.themoviedb.org/3/"
 
 private fun provideApiService(retrofit: Retrofit) = retrofit.create<MoviesApiService>()
 
@@ -79,7 +82,7 @@ private fun okHttpInterceptor() = Interceptor { chain ->
     val originalHttpUrl: HttpUrl = request.url
     
     val url = originalHttpUrl.newBuilder()
-        .addQueryParameter("apikey", "92eac0205b154b45d0d35306e2e62933")
+        .addQueryParameter("api_key", "92eac0205b154b45d0d35306e2e62933")
         .build()
     
     request.newBuilder()

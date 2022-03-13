@@ -8,7 +8,7 @@
     >
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/movieImage"
         android:layout_width="100dp"
         android:layout_height="150dp"
         android:layout_marginStart="16dp"
@@ -22,7 +22,7 @@
         />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/movieTitleTxt"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -30,19 +30,19 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageView"
-        app:layout_constraintTop_toTopOf="@+id/imageView"
+        app:layout_constraintStart_toEndOf="@+id/movieImage"
+        app:layout_constraintTop_toTopOf="@+id/movieImage"
         tools:text="@string/movie_name_place_holder"
         />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/releaseDateTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        app:layout_constraintStart_toStartOf="@+id/textView"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintStart_toStartOf="@+id/movieTitleTxt"
+        app:layout_constraintTop_toBottomOf="@+id/movieTitleTxt"
         tools:text="@string/movie_date_placeholder"
         />
 </androidx.constraintlayout.widget.ConstraintLayout>
