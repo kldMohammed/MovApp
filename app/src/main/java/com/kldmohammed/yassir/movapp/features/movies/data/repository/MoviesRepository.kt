@@ -1,6 +1,5 @@
 package com.kldmohammed.yassir.movapp.features.movies.data.repository
 
-import com.kldmohammed.yassir.movapp.features.movies.data.remote.model.MovieDto
 import com.kldmohammed.yassir.movapp.features.movies.domain.model.Movie
 import com.kldmohammed.yassir.movapp.features.movies.domain.model.MovieDetails
 

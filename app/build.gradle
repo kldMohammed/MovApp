@@ -3,6 +3,8 @@ plugins {
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-parcelize'
     id 'kotlinx-serialization'
+    id "androidx.navigation.safeargs.kotlin"
+
 }
 
 android {
@@ -63,6 +65,7 @@ dependencies {
     implementation("com.squareup.okhttp3:logging-interceptor:$okhttpVersion")
     implementation("com.squareup.okhttp3:okhttp:$okhttpVersion")
     implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
     implementation("com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:0.8.0")
 
     // Serialization
@@ -89,4 +92,12 @@ dependencies {
 
     // image loading
     implementation "io.coil-kt:coil:1.4.0"
+
+
+    def paging_version = "3.0.0-alpha12"
+
+    implementation "androidx.paging:paging-runtime:$paging_version"
+
+    // alternatively - without Android dependencies for tests
+    testImplementation "androidx.paging:paging-common:$paging_version"
 }

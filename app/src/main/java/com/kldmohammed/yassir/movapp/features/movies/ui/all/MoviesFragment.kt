@@ -1,14 +1,13 @@
 package com.kldmohammed.yassir.movapp.features.movies.ui.all
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import com.kldmohammed.androidtechtask.common.UiState
+import com.kldmohammed.yassir.movapp.common.extensions.errorSnackBar
 import com.kldmohammed.yassir.movapp.common.extensions.gone
 import com.kldmohammed.yassir.movapp.common.extensions.show
 import com.kldmohammed.yassir.movapp.databinding.FragmentMoviesBinding
@@ -30,7 +29,7 @@ class MoviesFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         _binding = FragmentMoviesBinding.inflate(inflater, container, false)
         return binding.root
@@ -47,11 +46,12 @@ class MoviesFragment : Fragment() {
         }
         
         moviesAdapter.onMovieClicked = { movie: Movie ->
-            Log.d("TAG", "onViewCreated: iiiii ${movie.id}")
-            Toast.makeText(requireContext(), "movie", Toast.LENGTH_SHORT).show()
+            val directions = MoviesFragmentDirections.actionMoviesFragmentToMovieDetailsFragment(
+                movie.id)
+            findNavController().navigate(directions)
         }
         
-        viewModel.uiSate.observe(viewLifecycleOwner, Observer {
+        viewModel.uiSate.observe(viewLifecycleOwner) {
             when (it) {
                 is UiState.Success -> {
                     binding.progressBar.gone()
@@ -61,10 +61,12 @@ class MoviesFragment : Fragment() {
                     binding.progressBar.show()
                 }
                 is UiState.Error -> {
-                
+                    binding.progressBar.gone()
+                    binding.root.errorSnackBar(it.throwable.message.toString())
                 }
+                else -> {}
             }
             
-        })
+        }
     }
 }

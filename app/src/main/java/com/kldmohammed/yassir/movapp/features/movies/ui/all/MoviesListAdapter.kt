@@ -6,6 +6,8 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
+import com.kldmohammed.yassir.movapp.common.extensions.format
+import com.kldmohammed.yassir.movapp.common.imagesServer
 import com.kldmohammed.yassir.movapp.databinding.MovieListItemBinding
 import com.kldmohammed.yassir.movapp.features.movies.domain.model.Movie
 
@@ -27,14 +29,18 @@ class MoviesListAdapter() :
     }
     
     
-    inner class ViewHolder constructor(val binding: MovieListItemBinding) :
+    inner class ViewHolder constructor(private val binding: MovieListItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
         
         fun bind(movie: Movie) {
             binding.movieTitleTxt.text = movie.title
-            binding.releaseDateTxt.text = movie.releaseDate
+            binding.releaseDateTxt.text = movie.releaseDate.format("yyyy")
             
-            binding.movieImage.load("https://image.tmdb.org/t/p/original/${movie.posterPath}")
+            binding.movieImage.load("$imagesServer${movie.posterPath}")
+            binding.movieOverview.text = movie.overview
+            binding.rateAverage.text = movie.voteAverage?.toString()
+            binding.ratingBar.rating =( movie.voteAverage?.toFloat()!! * 0.5).toFloat()
+            
             binding.root.setOnClickListener {
                 onMovieClicked.invoke(movie)
             }
